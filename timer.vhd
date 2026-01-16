@@ -50,9 +50,14 @@ begin
 
         done_o <= not_counting;         -- if counting '0', if not counting '1'
 
-        counting : process(clk_i) begin         -- MISSING RESET                        
+        counting : process(clk_i, arst_i) begin                                 -- Now sensitive also to changes of reset
 
-                if rising_edge(clk_i) then        
+                if(arst_i = '1') then
+                                                                                -- if triggered reset, asynchr, then reset values
+                        counter_value <= 0;
+                        not_counting <= '1';
+
+                elsif rising_edge(clk_i) then        
 
                         if (not_counting = '1') then                            -- wasn't already counting
                                 counter_value <= 0;                             -- reset counter to 0
