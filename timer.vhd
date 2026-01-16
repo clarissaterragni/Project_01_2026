@@ -27,7 +27,7 @@ port    (
             clk_i : in std_ulogic;
             arst_i : in std_ulogic;
             start_i : in std_ulogic;    -- No effect if not done_o
-            done_o : out std_ulogic     -- ’1’ when not counting (" not busy ")
+            done_o : out std_ulogic     -- ’1’ when not counting ("not busy")
         );
 
 end entity timer ;
@@ -50,7 +50,7 @@ begin
 
         done_o <= not_counting;         -- if counting '0', if not counting '1'
 
-        counting : process(clk_i) begin                                 
+        counting : process(clk_i) begin         -- MISSING RESET                        
 
                 if rising_edge(clk_i) then        
 
