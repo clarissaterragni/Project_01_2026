@@ -1,10 +1,13 @@
------------------------------------------------------------
+-------------------------------------------------------------------------------------
 -- 
 --      Parametric Timer
 --
 --                                  Clarissa Terragni
 --
------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-- For assumptions made during my reasonings, please refer to assumptions.md file
+-------------------------------------------------------------------------------------
+
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -40,14 +43,14 @@ architecture Behavioral of timer is
 
         constant counter_limit : integer := integer(freq_real * delay_real);    -- Get integer cause it's n° clock cycles
 
-        signal counter_value   : integer range 0 to counter_limit;
-        signal not_counting    : std_ulogic;
+        signal counter_value   : integer range 0 to counter_limit := 0;         -- Initialised to 0
+        signal not_counting    : std_ulogic := '1';                             -- Unless I'm counting, it's not busy
 
 begin
 
         done_o <= not_counting;         -- if counting '0', if not counting '1'
 
-        counting : process(clk_i) begin
+        counting : process(clk_i) begin                                 
 
                 if rising_edge(clk_i) then        
 
