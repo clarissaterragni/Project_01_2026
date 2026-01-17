@@ -34,14 +34,15 @@ end entity timer ;
 
 architecture Behavioral of timer is
 
-        constant delay_real    : real := real(delay_g) / 1 sec;                 -- VHDL stores time-type as integer in fs. Transf in seconds 
+        --constant delay_real    : real := real(delay_g) / 1 sec;                 -- VHDL stores time-type as integer in fs. Transf in seconds 
                                                                                 -- in order to multiply for clock (Hz)
                                                                                 -- ’time’ can be multiplied/divided by integer or real values
                                                                                 -- so cast as real (from vhdl-online.de). Do same for frequency
 
-        constant freq_real     : real := real(clk_freq_hz_g);                   -- Constant cause generics fixed per instance (don't change at runtime)
+        --constant freq_real     : real := real(clk_freq_hz_g);                   -- Constant cause generics fixed per instance (don't change at runtime)
 
-        constant counter_limit : natural := natural(freq_real * delay_real);    -- Get integer cause it's n° clock cycles
+        constant clk_per : time := 1 sec / clk_freq_hz_g; -- after testing with xilinx ise, issue found above, so changed
+        constant counter_limit : natural := natural(delay_g / clk_per);    -- Get integer cause it's n° clock cycles
 
         signal counter_value   : natural range 0 to counter_limit := 0;         -- Initialised to 0
         signal not_counting    : std_ulogic := '1';                             -- Unless I'm counting, it's not busy
