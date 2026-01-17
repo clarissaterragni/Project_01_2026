@@ -61,10 +61,11 @@ begin
                 elsif rising_edge(clk_i) then        
 
                         if (not_counting = '1') then                            -- wasn't already counting
-                                counter_value <= 0;                             -- reset counter to 0
+                                                           -- reset counter to 0
 
                                 if (start_i) = '1' then                         -- start_i sampled on rising edges of clk
                                         not_counting <= '0';                    -- Counting starts on clock cycle following start_i high
+                               counter_value <= 0;  
                                 end if;
 
                         else                                                    -- already counting

@@ -1,0 +1,5 @@
+  19015714278108 fs - check                -   ERROR - done_o asserted at correct delay - Got 18999999992400 fs. Expected 19000000000000 fs.
+C:\pyhton312\Lib\site-packages\vunit\vhdl\core\src\core_pkg.vhd:84:7:@19015714278108fs:(report failure): Stop simulation on log level error
+ghdl:error: report failed
+  instance: /tb_timer/main
+ghdl:error: simulation failed

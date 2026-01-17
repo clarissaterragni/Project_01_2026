@@ -1,0 +1,1 @@
+C:\ghdl511\bin\ghdl.exe:error: unhandled override for generic "delay_g"
