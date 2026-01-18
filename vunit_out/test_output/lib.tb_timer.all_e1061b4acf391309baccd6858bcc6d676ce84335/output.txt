@@ -1,5 +1,5 @@
-     13500000000 fs - default              -    INFO - Requested delay: 8000000000 fs, Clock frequency: 1000000 Hz, Clock period: 1000000000 fs
-     13500000000 fs - default              -    INFO - Measured delay (now - t_start): 8000000000 fs
-     13500000000 fs - default              -    INFO - done_o asserted at EXACT delay
-     13500000000 fs - default              -    INFO - Test completed successfully
-simulation stopped @13500ns with status 0
+3000005500000000 fs - default              -    INFO - Requested delay: 3000000000000000 fs, Clock frequency: 1000000 Hz, Clock period: 1000000000 fs
+3000005500000000 fs - default              -    INFO - Measured delay (now - t_start): 3000000000000000 fs
+3000005500000000 fs - default              -    INFO - done_o asserted at EXACT delay
+3000005500000000 fs - default              -    INFO - Test completed successfully
+simulation stopped @3000005500ns with status 0

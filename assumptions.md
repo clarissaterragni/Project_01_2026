@@ -1,7 +1,7 @@
 Assumptions made during my reasonings:
 
 * the user never selects a time or frequency equal to 0
-* the delay implemented is integer, as number of clock cycles. If the user selects generic values of delay and clock frequency which result in non-integer number of clock periods, the counter_limit is approximated to the nearest lower integer number
+* the delay implemented is integer, as number of clock cycles. If the user selects generic values of delay and clock frequency which result in non-integer number of clock periods, the counter\_limit is approximated to the nearest lower integer number. Regarding this, in testbench I added a printed message if the resulting clock period is not integer
 * if the delay is smaller than one clock period (given the chosen clock frequency), the timer does not count any cycles
-
-Regarding 2nd point, in testbench I added a print to log if the clock period resulting is not integer.
+* the design is synchronous: start\_i is sampled on rising edge of clk\_i; assumed start\_i is at least 1 clock cycle long
+* The design I implemented supports reasonable combinations of clk\_freq\_hz\_g and delay\_g for an FPGA timer based on a single counter (which counts clock cycles). Since I used “natural” type (32 bits) to store the number of clock cycles to be counted, the supported frequency-delay combinations are those that can be represented by a single counter without exceeding the “natural” range (0 to 2,147,483,647). Therefore, I intentionally decided to exclude cases with very long delays at high clock frequencies; in particular, configurations where the product of clock frequency and delay results in more than 2.1 billion clock cycles (for example, delay of 3 sec at frequency of 1 GHz) are not supported by this design. Such combinations are detected by the simulator and “error: value out of range” appears at terminal.

@@ -34,17 +34,18 @@ end entity timer ;
 
 architecture Behavioral of timer is
 
-        --constant delay_real    : real := real(delay_g) / 1 sec;                 -- VHDL stores time-type as integer in fs. Transf in seconds 
+        --constant delay_real    : real := real(delay_g) / 1 sec;               -- VHDL stores time-type as integer in fs. Transf in seconds 
                                                                                 -- in order to multiply for clock (Hz)
                                                                                 -- ’time’ can be multiplied/divided by integer or real values
                                                                                 -- so cast as real (from vhdl-online.de). Do same for frequency
 
-        --constant freq_real     : real := real(clk_freq_hz_g);                   -- Constant cause generics fixed per instance (don't change at runtime)
+        --constant freq_real     : real := real(clk_freq_hz_g);                 -- Constant cause generics fixed per instance (don't change at runtime)
 
-        constant clk_per : time := 1 sec / clk_freq_hz_g; -- after testing with xilinx ise, issue found above, so changed
+        constant clk_per : time := 1 sec / clk_freq_hz_g;                       -- after testing with xilinx ise, issue found above, so changed
         constant counter_limit : natural := natural(delay_g / clk_per);    -- Get integer cause it's n° clock cycles
 
         signal counter_value   : natural range 0 to counter_limit := 0;         -- Initialised to 0
+
         signal not_counting    : std_ulogic := '1';                             -- Unless I'm counting, it's not busy
 
 begin
@@ -61,18 +62,18 @@ begin
                 elsif rising_edge(clk_i) then        
 
                         if (not_counting = '1') then                            -- wasn't already counting
-                                                           -- reset counter to 0
-
+                                                           
                                 if (start_i) = '1' then                         -- start_i sampled on rising edges of clk
                                         not_counting <= '0';                    -- Counting starts on clock cycle following start_i high
-                               counter_value <= 0;  
+                                        counter_value <= 0; 
+                               
                                 end if;
 
                         else                                                    -- already counting
                                 if (counter_value < counter_limit) then
                                         counter_value <= counter_value + 1;     -- increment counter
                                 else
-                                        counter_value <= 0;                     -- end of delay period
+                                        counter_value <= 0; -- end of delay period
                                         not_counting <= '1';                    -- signal to output done_o       
                                 end if;
                         end if;

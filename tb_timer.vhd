@@ -8,7 +8,7 @@ context vunit_lib.vunit_context;
 entity tb_timer is
     generic (
       clk_freq_hz_g : natural := 1_000_000;
-      delay_g       : time    := 8 us;
+      delay_g       : time    := 3 sec;
       runner_cfg    : string  := ""
     );
 end entity tb_timer;
@@ -71,28 +71,19 @@ begin
 
     wait until done_o = '1';
 
-  --if abs((now - t_start) - delay_g) = 0 us then
-  --    check(true, "done_o asserted at exact delay");
-  --else
-  --    check(
-    --      abs((now - t_start) - delay_g) <= CLK_PERIOD,
-      --    "done_o asserted within one clock period (quantization)"
-      --);
-  --end if;
 
-  log("Requested delay: " & time'image(delay_g) & ", Clock frequency: " & integer'image(clk_freq_hz_g) & " Hz" &
-      ", Clock period: " & time'image(CLK_PERIOD));
+    log("Requested delay: " & time'image(delay_g) & ", Clock frequency: " & integer'image(clk_freq_hz_g) & " Hz" &
+        ", Clock period: " & time'image(CLK_PERIOD));
 
-  log("Measured delay (now - t_start): " & time'image(now - t_start));
+    log("Measured delay (now - t_start): " & time'image(now - t_start));
 
-  if abs((now - t_start) - delay_g) = 0 us then
-      log("done_o asserted at EXACT delay");
-  else
-      log("done_o asserted within one clock period (quantization)");
-      check(abs((now - t_start) - delay_g) <= CLK_PERIOD,"done_o asserted within one clock period (quantization)");
-  end if;
+    if abs((now - t_start) - delay_g) = 0 us then
+        log("done_o asserted at EXACT delay");
+    else
+        log("done_o asserted within one clock period (quantization)");
+        check(abs((now - t_start) - delay_g) <= CLK_PERIOD,"done_o asserted within one clock period (quantization)");
+    end if;
 
-    --check_equal(now - t_start, delay_g, msg => "done_o asserted at correct delay");
     -- if correct: get green script when run .py file
     
     log("Test completed successfully");
