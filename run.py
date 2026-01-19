@@ -1,3 +1,5 @@
+import ci_patches.ghdl_backend_patch
+
 from vunit import VUnit
 
 vu = VUnit.from_argv(compile_builtins=False)
