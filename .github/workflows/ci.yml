@@ -14,17 +14,18 @@ jobs:
       - name: Install GHDL
         run: |
           sudo apt update
-          sudo apt install -y ghdl
+          sudo apt install -y software-properties-common
+          sudo add-apt-repository ppa:ghdl/ghdl
+          sudo apt update
+          sudo apt install -y ghdl-5.1.1
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.14'
 
       - name: Install Python dependencies
         run: python -m pip install -r requirements.txt
 
       - name: Run VUnit tests
         run: python run.py --verbose 
-        env:
-            GHDL_BACKEND: mcode
