@@ -1,7 +1,8 @@
-import vunit.sim_if.ghdl as ghdl
-if hasattr(ghdl, "GHDLBackend") and hasattr(ghdl.GHDLBackend, "_backend_mapping"):
-    _original_mapping = ghdl.GHDLBackend._backend_mapping.copy()
-    ghdl.GHDLBackend._backend_mapping = {
+import vunit.sim_if.ghdl._ghdl as _ghdl
+
+if hasattr(_ghdl, "GHDLBackend") and hasattr(_ghdl.GHDLBackend, "_backend_mapping"):
+    _original_mapping = _ghdl.GHDLBackend._backend_mapping.copy()
+    _ghdl.GHDLBackend._backend_mapping = {
         **_original_mapping,
         r"mcode JIT code generator": "mcode",
     }
