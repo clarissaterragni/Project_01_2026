@@ -7,8 +7,8 @@ context vunit_lib.vunit_context;
 
 entity tb_timer is
     generic (
-      clk_freq_hz_g : natural := 1_000_000;
-      delay_g       : time    := 3 sec;
+      clk_freq_hz_g : natural := 200_000;
+      delay_g       : time    := 40 us;
       runner_cfg    : string  := ""
     );
 end entity tb_timer;
