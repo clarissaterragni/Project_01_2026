@@ -1,4 +1,9 @@
-import ci_patches.ghdl_backend_patch
+import vunit.sim_if.ghdl as ghdl
+_original_mapping = ghdl.GHDLBackend._backend_mapping.copy()
+ghdl.GHDLBackend._backend_mapping = {
+    **_original_mapping,
+    r"mcode JIT code generator": "mcode",
+}
 
 from vunit import VUnit
 
