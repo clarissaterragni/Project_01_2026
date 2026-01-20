@@ -1,4 +1,0 @@
-v 4
-file . "timer.vhd" "f408f5f5715e0feef344547eb0482e60da6d4bbc" "20260117143548.857":
-  entity timer at 12( 442) + 0 on 11;
-  architecture behavioral of timer at 35( 1252) + 0 on 12;
