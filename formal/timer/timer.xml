@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-01-20T17:51:37" hostname="DESKTOP-VS9IU7J" package="timer" id="0" name="default" tests="1" errors="1" failures="0" time="0" skipped="0">
+<properties>
+<property name="os" value="Windows"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="ERROR"/>
+</properties>
+<testcase classname="default" name="default" time="0">
+<error type="ERROR"/>
+</testcase>
+<system-out>SBY 17:51:35 [timer] Removing directory 'C:\CERN\Parametric_Timer\formal\timer'.
+SBY 17:51:35 [timer] engine_0: smtbmc z3
+SBY 17:51:35 [timer] base: starting process &quot;cd timer/src&amp; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 17:51:37 [timer] base: finished (returncode=3221225781)
+SBY 17:51:37 [timer] base: task failed. ERROR.
+SBY 17:51:37 [timer] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 17:51:37 [timer] summary: Elapsed process time unvailable on Windows
+SBY 17:51:37 [timer] summary: engine_0 (smtbmc z3) did not return a status
+SBY 17:51:37 [timer] summary: engine_0 did not produce any traces
+SBY 17:51:37 [timer] DONE (ERROR, rc=16)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

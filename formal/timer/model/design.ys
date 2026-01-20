@@ -1,0 +1,8 @@
+# running in timer/src/
+ghdl --std=08 -a ../timer.vhd timer_psl.vhd
+ghdl --std=08 -e timer_formal
+prep -top timer_formal
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

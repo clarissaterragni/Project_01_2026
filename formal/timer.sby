@@ -1,0 +1,11 @@
+[options]
+mode prove
+depth 30
+
+[engines]
+smtbmc z3
+
+[script]
+ghdl --std=08 -a ../timer.vhd timer_psl.vhd
+ghdl --std=08 -e timer_formal
+prep -top timer_formal

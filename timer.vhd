@@ -36,8 +36,7 @@ architecture Behavioral of timer is
 
         --constant delay_real    : real := real(delay_g) / 1 sec;               -- VHDL stores time-type as integer in fs. Transf in seconds 
                                                                                 -- in order to multiply for clock (Hz)
-                                                                                -- ’time’ can be multiplied/divided by integer or real values
-                                                                                -- so cast as real (from vhdl-online.de). Do same for frequency
+                                                                                
 
         --constant freq_real     : real := real(clk_freq_hz_g);                 -- Constant cause generics fixed per instance (don't change at runtime)
 
