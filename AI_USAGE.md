@@ -8,5 +8,19 @@ AI tool used: ChatGPT
 
 •	In Task 3 ChatGPT guided me through the setup of CI pipeline and GitHub Actions. I had to deal with version compatibility issues and, after several attempts, ended up solving them by using the latest Ubuntu version and changing to the llvm backend. I finally ensured that the Vunit tests run automatically and correctly, with different delay-frequency combinations.
 
+* Using AI (because I have no experience regarding Formal Verification), I tried to work on Task 4, creating and adding code to timer.sby and timer\_psl.vhd in the “formal” folder. I downloaded OSS CAD suite with SBY v0.61. However, I was not able to run the tests locally as Yosys did not execute successfully (even though the file exists, the path is set in the system and the Visual redistributables are installed). If the tests locally had produced a positive outcome, I’d have added to the already existing ci.yml file:
 
+
+
+name: Install OSS CAD Suite
+
+        uses: YosysHQ/setup-oss-cad-suite@v1
+
+name: Formal verification
+
+        run: |
+
+          cd formal
+
+          sby -f timer.sby
 
